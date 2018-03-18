@@ -1,0 +1,39 @@
+{
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "ecmaVersion": 8,
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react",
+        "babel"
+    ],
+    "extends": [
+        "google",
+        "plugin:react/recommended"
+    ],
+    "rules": {
+        "no-invalid-this": "off",
+        "babel/no-invalid-this": "warn",
+        "linebreak-style": "off",
+        "max-len": [
+            "warn",
+            {
+                "code": 140,
+                "ignoreComments": true
+            }
+        ],
+        "no-const-assign": "error",
+        "object-curly-spacing": "off",
+        "prefer-const": "warn",
+        "require-jsdoc": "off",
+        "space-before-blocks": "off",
+        "react/prop-types": "off" // sollte wieder deaktiviert werden
+    },
+    "env": {
+        "es6": true
+    }
+}
