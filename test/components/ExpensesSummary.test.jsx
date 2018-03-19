@@ -1,12 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import expenses from '../fixtures/expenses';
 import { ExpensesSummary } from '../../src/components/ExpensesSummary';
 
 test('should create a summary text', () => {
     const wrapper = shallow(<ExpensesSummary/>);
-    expect(wrapper.find('p').length).toEqual(1);
+    expect(wrapper.find('h1').length).toEqual(1);
 });
 
 test('should create expenses summary without expenses correctly', () => {

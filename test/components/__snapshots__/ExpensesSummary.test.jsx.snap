@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should create expenses summary with more expenses correctly 1`] = `
-<p>
+<h1>
   Viewing 
   3
    
@@ -9,11 +9,11 @@ exports[`should create expenses summary with more expenses correctly 1`] = `
    totalling 
   821,95€
   .
-</p>
+</h1>
 `;
 
 exports[`should create expenses summary with one expense correctly 1`] = `
-<p>
+<h1>
   Viewing 
   1
    
@@ -21,11 +21,11 @@ exports[`should create expenses summary with one expense correctly 1`] = `
    totalling 
   1,95€
   .
-</p>
+</h1>
 `;
 
 exports[`should create expenses summary without expenses correctly 1`] = `
-<p>
+<h1>
   Viewing 
   0
    
@@ -33,5 +33,5 @@ exports[`should create expenses summary without expenses correctly 1`] = `
    totalling 
   0,0€
   .
-</p>
+</h1>
 `;
