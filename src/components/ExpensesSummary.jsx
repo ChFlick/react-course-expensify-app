@@ -8,14 +8,19 @@ import getExpensesTotal from '../selectors/expenses-total';
 
 numeral.locale('de');
 
-export const ExpensesSummary = (props) => (
+export const ExpensesSummary = ({ expenseCount, expensesTotal }) => (
     <p>
-        Viewing {props.expenses.length} expenses totalling {numeral(getExpensesTotal(props.expenses) / 100).format('0.0[,]00$')}
+        Viewing {expenseCount} expense{expenseCount !== 1 && 's'} totalling {numeral(expensesTotal / 100).format('0.0[,]00$')}
     </p>
 );
 
-const matchStateToProps = (state) => ({
-    expenses: getVisibleExpenses(state.expenses, state.filters),
-});
+const matchStateToProps = (state) => {
+    const visibleExpenses = getVisibleExpenses(state.expenses, state.filters);
+
+    return {
+        expenseCount: visibleExpenses.length,
+        expensesTotal: getExpensesTotal(visibleExpenses),
+    };
+};
 
 export default connect(matchStateToProps)(ExpensesSummary);
