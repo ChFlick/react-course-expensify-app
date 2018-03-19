@@ -8,11 +8,16 @@ import getExpensesTotal from '../selectors/expenses-total';
 
 numeral.locale('de');
 
-export const ExpensesSummary = ({ expenseCount, expensesTotal }) => (
-    <p>
-        Viewing {expenseCount} expense{expenseCount !== 1 && 's'} totalling {numeral(expensesTotal / 100).format('0.0[,]00$')}
-    </p>
-);
+export const ExpensesSummary = ({ expenseCount, expensesTotal }) => {
+    const expenseWord = expenseCount === 1 ? 'expense' : 'expenses';
+    const formattedTotal = numeral(expensesTotal / 100).format('0.0[,]00$');
+
+    return (
+        <p>
+            Viewing {expenseCount} {expenseWord} totalling {formattedTotal}.
+        </p>
+    );
+};
 
 const matchStateToProps = (state) => {
     const visibleExpenses = getVisibleExpenses(state.expenses, state.filters);
