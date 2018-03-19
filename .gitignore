@@ -2,3 +2,8 @@ node_modules/
 .vscode/
 
 public/dist/
+
+.env.test
+.env.development
+
+yarn-error.log

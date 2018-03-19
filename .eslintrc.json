@@ -31,6 +31,7 @@
         "prefer-const": "warn",
         "require-jsdoc": "off",
         "space-before-blocks": "off",
+        "comma-dangle": "off",
         "react/prop-types": "off" // sollte wieder deaktiviert werden
     },
     "env": {
