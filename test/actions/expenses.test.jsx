@@ -150,18 +150,21 @@ test('should set edit expense to the store', (done) => {
 test('should edit expense on the database', (done) => {
     const store = createMockStore();
     const { id } = expenses[0];
+    const { amount, createdAt } = expenses[0];
     const editedExpenseData = {
         description: 'edited',
         note: 'edited',
-        amount: 1234321,
-        createdAt: 1234321
     };
 
     store.dispatch(startEditExpense(id, editedExpenseData)).then(() => {
         return database.ref(`expenses/${id}`).once('value');
     }).then((snapshot) => {
-        expect(snapshot.val()).toEqual(editedExpenseData);
-        done();  
+        expect(snapshot.val()).toEqual({
+            amount,
+            createdAt,
+            ...editedExpenseData
+        });
+        done();
     });
 });
 
