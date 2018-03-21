@@ -9,10 +9,14 @@ import 'react-dates/lib/css/_datepicker.css';
 import 'react-dates/initialize';
 import { firebase } from './firebase/firebase';
 import LoadingPage from './components/LoadingPage';
+import Modal from 'react-modal';
 
 import { startSetExpenses } from './actions/expenses';
 import { login, logout } from './actions/auth';
 
+const appRoot = document.getElementById('app');
+
+Modal.setAppElement(document.getElementById('app'));
 
 const store = configureStore();
 
@@ -25,12 +29,12 @@ const jsx = (
 let hasRendered = false;
 const renderApp = () => {
     if (!hasRendered) {
-        ReactDOM.render(jsx, document.getElementById('app'));
+        ReactDOM.render(jsx, appRoot);
         hasRendered = true;
     }
 };
 
-ReactDOM.render(<LoadingPage />, document.getElementById('app'));
+ReactDOM.render(<LoadingPage />, appRoot);
 
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {

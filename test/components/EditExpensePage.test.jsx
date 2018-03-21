@@ -35,10 +35,18 @@ test('should handle edit expense', () => {
     expect(startEditExpense).toHaveBeenLastCalledWith(expense.id, expense);
 });
 
-test('should handle remove expense', () => {
-    wrapper.find('button').simulate('click');
+test('should handle remove expense with modal -> remove', () => {
+    wrapper.find('button').at(0).simulate('click');
+    wrapper.find('button').at(2).simulate('click');
 
     expect(history.push).toHaveBeenLastCalledWith('/');
     expect(startRemoveExpense).toHaveBeenLastCalledWith({id: expense.id});
 });
 
+test('should handle remove expense with modal -> cancel', () => {
+    wrapper.find('button').at(0).simulate('click');
+    wrapper.find('button').at(1).simulate('click');
+
+    expect(history.push).not.toHaveBeenCalled();
+    expect(startRemoveExpense).not.toHaveBeenCalled();
+});

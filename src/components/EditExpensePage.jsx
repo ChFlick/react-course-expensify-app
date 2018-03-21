@@ -1,19 +1,37 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Modal from 'react-modal';
 
 import ExpenseForm from './ExpenseForm';
 import { startEditExpense, startRemoveExpense } from '../actions/expenses';
 
 export class EditExpensePage extends React.Component {
+    state = {
+        modalIsOpen: false
+    };
+
     onEdit = (expense) => {
         this.props.startEditExpense(this.props.expense.id, expense);
         this.props.history.push('/');
-    }
+    };
 
-    onRemove = () => {
-        this.props.startRemoveExpense({id: this.props.expense.id});
+    openModal = () => {
+        this.setState(() => ({
+            modalIsOpen: true
+        }));
+    };
+
+    closeModal = () => {
+        this.setState(() => ({
+            modalIsOpen: false
+        }));
+    };
+
+    removeExpense = () => {
+        this.props.startRemoveExpense({ id: this.props.expense.id });
+        this.closeModal();
         this.props.history.push('/');
-    }
+    };
 
     render() {
         return (
@@ -24,13 +42,24 @@ export class EditExpensePage extends React.Component {
                     </div>
                 </div>
                 <div className="content-container">
-                <ExpenseForm
-                    expense={this.props.expense}
-                    onSubmit={this.onEdit}
-                />
-                <button className="button button--secondary" onClick={this.onRemove}>
-                    Remove Expense
-                </button>
+                    <ExpenseForm
+                        expense={this.props.expense}
+                        onSubmit={this.onEdit}
+                    />
+                    <button className="button button--secondary" onClick={this.openModal}>
+                        Remove Expense
+                    </button>
+
+                    <Modal
+                        isOpen={this.state.modalIsOpen}
+                        onRequestClose={this.closeModal}
+                        contentLabel="Remove Expense Modal"
+                        className="modal"
+                    >
+                        <div>Do you really want to remove the expense?</div>
+                        <button className="button" onClick={this.closeModal}>Cancel</button>
+                        <button className="button" onClick={this.removeExpense}>Remove</button>
+                    </Modal>
                 </div>
             </div>
         );
