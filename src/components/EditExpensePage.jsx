@@ -7,7 +7,7 @@ import { startEditExpense, startRemoveExpense } from '../actions/expenses';
 
 export class EditExpensePage extends React.Component {
     state = {
-        modalIsOpen: true
+        modalIsOpen: false
     };
 
     onEdit = (expense) => {
