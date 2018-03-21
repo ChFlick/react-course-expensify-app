@@ -15,12 +15,18 @@ exports[`should create expenses summary with more expenses correctly 1`] = `
         3
          
       </span>
+       
       expenses
        totalling 
       <span>
         821,95€
       </span>
     </h1>
+    <h3
+      className="page-header__subtitle"
+    >
+      All expenses visible.
+    </h3>
     <div
       className="page-header__actions"
     >
@@ -51,12 +57,18 @@ exports[`should create expenses summary with one expense correctly 1`] = `
         1
          
       </span>
+       
       expense
        totalling 
       <span>
         1,95€
       </span>
     </h1>
+    <h3
+      className="page-header__subtitle"
+    >
+      All expenses visible.
+    </h3>
     <div
       className="page-header__actions"
     >
@@ -87,12 +99,18 @@ exports[`should create expenses summary without expenses correctly 1`] = `
         0
          
       </span>
+       
       expenses
        totalling 
       <span>
         0,0€
       </span>
     </h1>
+    <h3
+      className="page-header__subtitle"
+    >
+      All expenses visible.
+    </h3>
     <div
       className="page-header__actions"
     >
