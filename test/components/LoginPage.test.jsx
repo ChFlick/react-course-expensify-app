@@ -3,16 +3,31 @@ import { shallow } from 'enzyme';
 
 import { LoginPage } from '../../src/components/LoginPage';
 
+let startLoginWithGoogle;
+let startLoginWithGithub;
+
+beforeEach(() => {
+    startLoginWithGoogle = jest.fn();
+    startLoginWithGithub = jest.fn();
+});
+
 test('should render login page correctly', () => {
     const wrapper = shallow(<LoginPage startLogin={() => {}}/>);
     expect(wrapper).toMatchSnapshot();
 });
 
-test('should call startLogin on button click', () => {
-    const startLogin = jest.fn();
-    const wrapper = shallow(<LoginPage startLogin={startLogin} />);
+test('should call startLoginWithGoogle on google button click', () => {
+    const wrapper = shallow(<LoginPage startLoginWithGoogle={startLoginWithGoogle} />);
 
-    wrapper.find('button').simulate('click');
+    wrapper.find('button').at(0).simulate('click');
 
-    expect(startLogin).toHaveBeenCalled();
+    expect(startLoginWithGoogle).toHaveBeenCalled();
+});
+
+test('should call startLoginWithGithub on github button click', () => {
+    const wrapper = shallow(<LoginPage startLoginWithGithub={startLoginWithGithub} />);
+
+    wrapper.find('button').at(1).simulate('click');
+
+    expect(startLoginWithGithub).toHaveBeenCalled();
 });

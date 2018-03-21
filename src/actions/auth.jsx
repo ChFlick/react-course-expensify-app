@@ -1,4 +1,4 @@
-import { firebase, googleAuthProvider } from '../firebase/firebase';
+import { firebase, googleAuthProvider, githubAuthProvider } from '../firebase/firebase';
 
 export const login = (uid) => {
     return {
@@ -7,9 +7,15 @@ export const login = (uid) => {
     };
 };
 
-export const startLogin = () => {
+export const startLogin = (providerName) => {
     return () => {
-        return firebase.auth().signInWithPopup(googleAuthProvider);
+        if (providerName === 'google') {
+            return firebase.auth().signInWithPopup(googleAuthProvider);
+        } else if (providerName === 'github') {
+            return firebase.auth().signInWithPopup(githubAuthProvider);
+        } else {
+            throw new Error('invalid authentication provider');
+        }
     };
 };
 

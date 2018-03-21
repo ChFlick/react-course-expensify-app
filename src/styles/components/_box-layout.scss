@@ -14,6 +14,14 @@
     padding: $l-size $m-size;
     text-align: center;
     width: 25rem;
+
+    > button {
+        margin-bottom: $s-size;
+    }
+
+    > *:last-child {
+        margin-bottom: 0;
+    }
 }
 
 .box-layout__title {
