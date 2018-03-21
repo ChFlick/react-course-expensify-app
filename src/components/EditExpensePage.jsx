@@ -7,7 +7,7 @@ import { startEditExpense, startRemoveExpense } from '../actions/expenses';
 
 export class EditExpensePage extends React.Component {
     state = {
-        modalIsOpen: false
+        modalIsOpen: true
     };
 
     onEdit = (expense) => {
@@ -56,9 +56,13 @@ export class EditExpensePage extends React.Component {
                         contentLabel="Remove Expense Modal"
                         className="modal"
                     >
-                        <div>Do you really want to remove the expense?</div>
-                        <button className="button" onClick={this.closeModal}>Cancel</button>
-                        <button className="button" onClick={this.removeExpense}>Remove</button>
+                        <div className="modal__content">
+                            Do you really want to remove the expense?
+                        </div>
+                        <div className="modal__buttons">
+                            <button className="button" onClick={this.closeModal}>Cancel</button>
+                            <button className="button" onClick={this.removeExpense}>Remove</button>
+                        </div>
                     </Modal>
                 </div>
             </div>
