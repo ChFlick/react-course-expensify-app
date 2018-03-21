@@ -42,7 +42,7 @@ exports[`should render edit expense page correctly 1`] = `
       className="modal"
       closeTimeoutMS={0}
       contentLabel="Remove Expense Modal"
-      isOpen={false}
+      isOpen={true}
       onRequestClose={[Function]}
       parentSelector={[Function]}
       portalClassName="ReactModalPortal"
@@ -51,21 +51,27 @@ exports[`should render edit expense page correctly 1`] = `
       shouldFocusAfterRender={true}
       shouldReturnFocusAfterClose={true}
     >
-      <div>
+      <div
+        className="modal__content"
+      >
         Do you really want to remove the expense?
       </div>
-      <button
-        className="button"
-        onClick={[Function]}
+      <div
+        className="modal__buttons"
       >
-        Cancel
-      </button>
-      <button
-        className="button"
-        onClick={[Function]}
-      >
-        Remove
-      </button>
+        <button
+          className="button"
+          onClick={[Function]}
+        >
+          Cancel
+        </button>
+        <button
+          className="button"
+          onClick={[Function]}
+        >
+          Remove
+        </button>
+      </div>
     </Modal>
   </div>
 </div>
